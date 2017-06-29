@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<pattern line.separator="\n" />
+	<!--<appender name="FILE"-->
+		<!--class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+		<!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+			<!--<level>INFO</level>-->
+		<!--</filter>-->
+		<!--<file>/data/log/sargeras.web.management/access.log</file>-->
+		<!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+			<!--<fileNamePattern>/data/log/sargeras.web.management/access.log.%d{yyyyMMdd}-->
+			<!--</fileNamePattern>-->
+			<!--<maxHistory>7</maxHistory>-->
+		<!--</rollingPolicy>-->
+		<!--<encoder />-->
+	<!--</appender>-->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>DEBUG</level>
+		</filter>
+	</appender>
+	<root>
+		<!--<appender-ref ref="FILE" />-->
+		<appender-ref ref="STDOUT" />
+	</root>
+	<!-- <logger name="me.ele.core.heartbeat" level="OFF" /> -->
+</configuration>
