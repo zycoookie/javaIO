@@ -75,3 +75,5 @@ soa-backup/*/*/*
 /Client.json
 /*/*/*/Client.json
 /*/*/*/*/Client.json
+.vcs
+.iml
