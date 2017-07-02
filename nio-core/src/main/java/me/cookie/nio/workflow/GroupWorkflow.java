@@ -1,6 +1,7 @@
 package me.cookie.nio.workflow;
 
 import me.cookie.nio.group.Group;
+import me.cookie.nio.handler.Chain;
 import me.cookie.nio.worker.Worker;
 
 import java.util.Collection;
@@ -99,6 +100,11 @@ public abstract class GroupWorkflow implements Workflow{
         @Override
         public Collection<Worker> getWorkers() {
             return current.getWorkers();
+        }
+
+        @Override
+        public Chain createChain() {
+            return current.createChain();
         }
     }
 }

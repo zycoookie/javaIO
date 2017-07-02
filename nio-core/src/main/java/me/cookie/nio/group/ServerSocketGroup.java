@@ -150,7 +150,7 @@ public class ServerSocketGroup extends SocketBindGroup implements LifeCycle {
 
                     selector.select(1000);
 
-                    while(((ChainContext) context).getChain().isFinish()){
+                    while(((ChainContext) context).getChain().isStart()){
                         Set<SelectionKey> selectionKeySet = selector.selectedKeys();
                         if(selectionKeySet != null && !selectionKeySet.isEmpty()){
                             selectionKeySet.stream().forEach(selectionKey -> {
@@ -159,7 +159,8 @@ public class ServerSocketGroup extends SocketBindGroup implements LifeCycle {
                                     ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();
                                     try {
                                         SocketChannel socketChannel = serverSocketChannel.accept();
-                                        ((ChainContext) context).getChain().doChain(chainContext);
+                                        chainContext.addTask(socketChannel);
+                                        chainContext.getChain().doChain(chainContext);
                                     } catch (IOException e) {
                                         log.error("socketChannel accept exception",e);
                                     }catch (Exception e){
