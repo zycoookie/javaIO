@@ -77,3 +77,7 @@ soa-backup/*/*/*
 /*/*/*/*/Client.json
 *.vcs
 *.iml
+io/io.iml
+javaIO.iml
+nio-client/nio-client.iml
+.idea/
